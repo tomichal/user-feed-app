@@ -1,7 +1,7 @@
 class Post < ApplicationRecord
   belongs_to :user
 
-  validates :user, presence: true
+  validates :content, :user, presence: true
 
   class << self
     # TODO: Write tests.
