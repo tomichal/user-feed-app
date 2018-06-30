@@ -5,8 +5,13 @@ class Post < ApplicationRecord
 
   class << self
     def main_feed(user)
-      # TODO.
-      all
+      if user.nil?
+        # TODO: All posts from users who chose their feeds to be public.
+        all
+      else
+        # TODO: Posts from users who are followed by the given user.
+        all
+      end
     end
   end
 end

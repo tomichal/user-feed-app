@@ -1,4 +1,8 @@
-%h1 Your feed
+%h1
+  - if signed_in?
+    Posts by users you follow
+  - else
+    All public posts
 %ul
 - @posts.each do |post|
   %li= post.content

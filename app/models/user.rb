@@ -12,4 +12,9 @@ class User < ApplicationRecord
   has_many :posts, dependent: :destroy
 
   validates :password, presence: true
+
+
+  def first_name
+    name.split(" ").first
+  end
 end

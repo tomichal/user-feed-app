@@ -8,4 +8,20 @@
     = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload'
     = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
   %body
+    %header
+    - if signed_in?
+      = current_user.first_name
+      |
+      = link_to :logout, method: :delete do
+        Log Out
+    - else
+      = link_to :login do
+        Log In
+
+    .alerts
+      - flash.each do |name, msg|
+        - if msg.is_a?(String)
+          .alert{ class: "alert-#{name.downcase}" }
+            = msg
+
     = yield

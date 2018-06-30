@@ -19,15 +19,12 @@ module SessionsHelper
   end
 
   def current_user=(user)
-    session[:user_id] = user ? user.id : nil
+    session[:user_id] = (user ? user.id : nil)
     @current_user = user
   end
 
   def current_user
-    return @current_user if defined?(@current_user)
-    if session[:user_id].present?
-      @current_user = User.friendly.find(session[:user_id]).try(:becomes, User) rescue nil
-    end
+    @current_user ||= (User.find(session[:user_id]) rescue nil)
   end
 
   def redirect_back
