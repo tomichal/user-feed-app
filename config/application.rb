@@ -16,9 +16,9 @@ module UserFeedApp
     # -- all .rb files in that directory are automatically loaded after loading
     # the framework and any gems in your application.
 
-    # default_url_options[:host] = "user-feed-app.test"
     # config.action_cable.allowed_request_origins = ["https://#{default_url_options[:host]}"]
     # config.action_cable.url = "wss://#{default_url_options[:host]}/cable"
+    default_url_options[:host] = "localhost:3000"
     config.action_cable.allowed_request_origins = ["http://localhost:3000"]
     config.action_cable.url = "ws://localhost:3000/cable"
 

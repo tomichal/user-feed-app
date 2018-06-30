@@ -19,12 +19,12 @@ module SessionsHelper
   end
 
   def current_user=(user)
-    session[:user_id] = (user ? user.id : nil)
+    cookies.signed[:user_id] = (user ? user.id : nil)
     @current_user = user
   end
 
   def current_user
-    @current_user ||= (User.find(session[:user_id]) rescue nil)
+    @current_user ||= (User.find(cookies.signed[:user_id]) rescue nil)
   end
 
   def redirect_back
@@ -36,7 +36,9 @@ module SessionsHelper
     if signed_in?
       session.delete(:return_to) if session[:return_to].present?
     elsif request.fullpath !~ /(login|logout|sessions)/
-      session[:return_to] = "#{request.protocol}#{request.host}#{request.fullpath}"
+      fullpath = request.fullpath
+      fullpath = fullpath.gsub(/\/$/, ":3000") if Rails.env.development?
+      session[:return_to] = "#{request.protocol}#{request.host}#{fullpath}"
     end
   end
 end
