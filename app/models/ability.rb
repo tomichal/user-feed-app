@@ -5,5 +5,6 @@ class Ability
     user ||= User.new
 
     can :index, Post
+    can :create, Post if user.persisted?
   end
 end
