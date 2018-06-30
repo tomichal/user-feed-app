@@ -11,6 +11,7 @@ class User < ApplicationRecord
   # to delete their account.
   has_many :posts, dependent: :destroy
 
+  validates :username, uniqueness: true
   validates :password, presence: true
 
 
