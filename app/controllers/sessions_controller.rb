@@ -7,8 +7,6 @@ class SessionsController < ApplicationController
   end
 
   def create
-    # Prevent session fixation attacks by resetting the session, except for the
-    # URL that they should be redirected to after a successful login.
     return_to = session[:return_to]
     reset_session
     session[:return_to] = return_to
