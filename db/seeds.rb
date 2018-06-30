@@ -5,3 +5,6 @@ user3 = User.create(name: "Christina Pham", username: "cpham", password: "test12
 user2.followed_users << user1
 user2.followed_users << user3
 
+user1.posts.create(content: "Post 1 by Michal")
+user3.posts.create(content: "Post 1 by Christina")
+
