@@ -1,10 +1,13 @@
-user1 = User.create(name: "Michal Tomaszewski", username: "michalt48", password: "test1234")
-user2 = User.create(name: "John Doe", username: "jdoe", password: "test1234")
-user3 = User.create(name: "Christina Pham", username: "cpham", password: "test1234")
+michal = User.create(name: "Michal Tomaszewski", username: "mt", password: "test1234")
+john = User.create(name: "John Doe", username: "jd", password: "test1234")
+christina = User.create(name: "Christina Pham", username: "cp", password: "test1234", is_feed_public: true)
+bill = User.create(name: "Bill Snazz", username: "bs", password: "test1234", is_feed_public: true)
 
-user2.followed_users << user1
-user2.followed_users << user3
+john.followed_users << michal
+john.followed_users << christina
 
-user1.posts.create(content: "Post 1 by Michal")
-user3.posts.create(content: "Post 1 by Christina")
+michal.posts.create(content: "Post 1 by Michal")
+john.posts.create(content: "Post 1 by John")
+christina.posts.create(content: "Post 1 by Christina")
+bill.posts.create(content: "Post 1 by Bill")
 

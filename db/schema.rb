@@ -35,7 +35,7 @@ ActiveRecord::Schema.define(version: 2018_06_30_141518) do
     t.string "username", null: false
     t.string "name"
     t.string "password_digest"
-    t.boolean "is_feed_private", default: true
+    t.boolean "is_feed_public", default: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

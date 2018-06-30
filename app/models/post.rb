@@ -4,13 +4,12 @@ class Post < ApplicationRecord
   validates :user, presence: true
 
   class << self
-    def main_feed(user)
+    def feed(user)
       if user.nil?
-        # TODO: All posts from users who chose their feeds to be public.
-        all
+        # joins("INNER JOIN users ON posts.user_id = users.id AND users.is_feed_public = true")
+        joins(:user).where(users: { is_feed_public: true })
       else
-        # TODO: Posts from users who are followed by the given user.
-        all
+        joins(:user).merge(user.followed_users)
       end
     end
   end
