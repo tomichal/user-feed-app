@@ -10,7 +10,7 @@ class PostsController < ApplicationController
     @post = Post.new(post_params)
     @post.user = current_user
     if @post.save
-      broadcast_to_channel(@post)
+      PostRelayJob.perform_later(@post.id)
       # redirect_to posts_url, flash: { success: "Post created." }
     else
       render :new
@@ -21,14 +21,5 @@ class PostsController < ApplicationController
 
   def post_params
     params.require(:post).permit(:content)
-  end
-
-  def broadcast_to_channel(post)
-    current_user.follower_users.each do |user|
-      PostsChannel.broadcast_to("follower_user:#{user.id}", post)
-    end
-    if current_user.is_feed_public?
-      PostsChannel.broadcast_to("follower_user:", post)
-    end
   end
 end
