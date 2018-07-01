@@ -1,2 +1,4 @@
 - user_html = escape_javascript(render("users/user", user: @followed_user)).html_safe
+- posts_html = escape_javascript(render("posts/posts", posts: @posts)).html_safe
+$('.#{dom_class(Post)}').replaceWith('#{posts_html}');
 $('##{dom_id(@followed_user)}').replaceWith('#{user_html}');

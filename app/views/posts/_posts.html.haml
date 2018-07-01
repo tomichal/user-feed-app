@@ -1,5 +1,6 @@
-%ul{class: dom_class(Post) }
-  - posts.each do |post|
-    = render "posts/post", post: post
+%div{class: dom_class(Post) }
+  %ul
+    - posts.each do |post|
+      = render "posts/post", post: post
 
-= pagination_links(posts, param_name: "posts_page")
+  = pagination_links(posts, param_name: "posts_page")
