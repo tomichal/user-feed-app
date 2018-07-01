@@ -1,3 +1,5 @@
+# TODO: Perhaps use factory_bot and forgery to populate this with some more users and random posts.
+
 michal = User.create(name: "Michal Tomaszewski", username: "mt", password: "test1234")
 john = User.create(name: "John Doe", username: "jd", password: "test1234")
 christina = User.create(name: "Christina Pham", username: "cp", password: "test1234", is_feed_public: true)
