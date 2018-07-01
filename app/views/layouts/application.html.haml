@@ -18,10 +18,6 @@
       = link_to :login do
         Log In
 
-    .alerts
-      - flash.each do |name, msg|
-        - if msg.is_a?(String)
-          .alert{ class: "alert-#{name.downcase}" }
-            = msg
+    = render "shared/alerts"
 
     = yield

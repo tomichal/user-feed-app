@@ -10,9 +10,8 @@ class PostsController < ApplicationController
     @post = Post.new(post_params)
     @post.user = current_user
     if @post.save
+      flash.now[:success] = "Post created."
       PostRelayJob.perform_later(@post.id)
-    else
-      render :new
     end
   end
 
