@@ -6,6 +6,6 @@ App.posts = App.cable.subscriptions.create("PostsChannel", {
     console.log('Disconnected from PostsChannel')
   },
   received: function(data) {
-    $('.post').prepend(data.post);
+    $('.post ul').prepend(data.post);
   }
 });

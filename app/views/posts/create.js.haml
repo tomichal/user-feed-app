@@ -8,5 +8,5 @@ $('form##{dom_id(new_post)}').replaceWith('#{form_html}');
 
 - unless @post.errors.any?
   - post_html = escape_javascript(render("posts/post", post: @post)).html_safe
-  $('.#{dom_class(Post)}').prepend('#{post_html}');
+  $('.#{dom_class(Post)} ul').prepend('#{post_html}');
   $('.alerts').replaceWith('#{alerts_html}');
