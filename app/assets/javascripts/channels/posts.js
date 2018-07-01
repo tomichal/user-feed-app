@@ -1,9 +1,9 @@
 App.posts = App.cable.subscriptions.create("PostsChannel", {
   connected: function() {
-    console.log('Connected')
+    console.log('Connected to PostsChannel')
   },
   disconnected: function() {
-    console.log('Disconnected')
+    console.log('Disconnected from PostsChannel')
   },
   received: function(data) {
     $('.post').prepend(data.post);
