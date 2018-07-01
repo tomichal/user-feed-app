@@ -1,6 +1,6 @@
 - new_post = Post.new
 - post = @post.errors.any? ? @post : new_post
-- alerts_html = escape_javascript(render("shared/alerts")).html_safe
+- alerts_html = escape_javascript(render("shared/alerts", alerts: flash)).html_safe
 - form_html = escape_javascript(render("posts/form", post: post)).html_safe
 
 $('.alerts').replaceWith('#{alerts_html}');
