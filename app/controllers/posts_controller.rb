@@ -24,9 +24,11 @@ class PostsController < ApplicationController
   end
 
   def broadcast_to_channel(post)
-    PostsChannel.broadcast_to(
-      "PostsChannel",
-      post
-    )
+    current_user.follower_users.each do |user|
+      PostsChannel.broadcast_to("follower_user:#{user.id}", post)
+    end
+    if current_user.is_feed_public?
+      PostsChannel.broadcast_to("follower_user:", post)
+    end
   end
 end
