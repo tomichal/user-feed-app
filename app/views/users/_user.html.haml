@@ -1,6 +1,10 @@
 %li{ id: dom_id(user) }
   - followed_user_map = current_user.followed_user_map(user)
-  = user.name
+  %span= user.name
+  %ul.meta
+    %li Follows #{user.followed_users.size}
+    %li Followed by #{user.follower_users.size}
+
   - unless current_user == user
     - if followed_user_map.present?
       = button_to "Unfollow", follow_user_map_path(followed_user_map), method: :delete, remote: true
