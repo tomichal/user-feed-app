@@ -6,10 +6,10 @@
 
 %h1
   - if signed_in?
-    Your feed
+    Your
   - else
-    All public posts
-
+    Public
+  feed
 %ul{class: dom_class(Post) }
   - @posts.each do |post|
     = render "posts/post", post: post
