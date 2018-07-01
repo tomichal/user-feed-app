@@ -11,7 +11,6 @@ class PostsController < ApplicationController
     @post.user = current_user
     if @post.save
       PostRelayJob.perform_later(@post.id)
-      # redirect_to posts_url, flash: { success: "Post created." }
     else
       render :new
     end
