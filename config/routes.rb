@@ -12,6 +12,8 @@ Rails.application.routes.draw do
 
   resources :users, only: [:index]
 
+  resources :follow_user_maps, only: [:create, :destroy]
+
   # ActionCable
   mount ActionCable.server => "/cable"
 end

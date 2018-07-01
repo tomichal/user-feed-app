@@ -1,0 +1,2 @@
+- user_html = escape_javascript(render("users/user", user: @followed_user)).html_safe
+$('##{dom_id(@followed_user)}').replaceWith('#{user_html}');

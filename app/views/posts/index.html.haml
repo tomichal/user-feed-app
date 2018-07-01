@@ -14,10 +14,10 @@
 
 - if signed_in?
   %h2 Users
-  = form_tag users_path, remote: true, method: :get, data: { submit_on_type: true } do |f|
+  = form_tag users_path, remote: true, method: :get, data: { submit_on_type: true, submit_on_load: true } do |f|
     = text_field_tag :q, params[:q], placeholder: "Search...", autocomplete: :off
     = submit_tag "Search"
-  = render "users/users", users: @users
+  = render "users/users", users: []
 - else
   %h2
     %em Log in to search for and follow other users.

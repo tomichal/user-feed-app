@@ -19,6 +19,10 @@ class User < ApplicationRecord
     name.split(" ").first
   end
 
+  def followed_user_map(user)
+    followed_user_maps.where(followed_user_id: user.id).first
+  end
+
   class << self
     def search(params = {})
       base = all

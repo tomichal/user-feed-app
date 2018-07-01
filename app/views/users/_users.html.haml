@@ -1,4 +1,6 @@
 %ul{ class: dom_class(User) }
   - users.each do |user|
-    %li{ id: dom_id(user) }= user.name
+    = render "users/user", user: user
+
+- if users.present?
   = pagination_links(users, param_name: :users_page)
