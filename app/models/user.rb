@@ -1,6 +1,4 @@
 class User < ApplicationRecord
-  has_secure_password validations: false
-
   has_many :followed_user_maps, foreign_key: "follower_user_id", dependent: :destroy, class_name: "FollowUserMap"
   has_many :follower_user_maps, foreign_key: "followed_user_id", dependent: :destroy, class_name: "FollowUserMap"
   has_many :follower_users, through: :follower_user_maps, class_name: "User", source: :follower_user
@@ -12,7 +10,11 @@ class User < ApplicationRecord
   has_many :posts, dependent: :destroy
 
   validates :username, uniqueness: true
-  validates :password, presence: true
+
+  has_secure_password validations: false
+  validates :password, presence: true, if: -> { !password_digest.present? }
+  validates_length_of :password, maximum: ActiveModel::SecurePassword::MAX_PASSWORD_LENGTH_ALLOWED
+  validates_confirmation_of :password, allow_blank: true
 
 
   def first_name
