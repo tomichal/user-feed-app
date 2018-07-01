@@ -9,5 +9,5 @@
     All public posts
 
 %ul{class: dom_class(Post) }
-- @posts.each do |post|
-  = render "posts/post", post: post
+  - @posts.each do |post|
+    = render "posts/post", post: post

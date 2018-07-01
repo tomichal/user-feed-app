@@ -8,6 +8,6 @@ App.posts = App.cable.subscriptions.create("PostsChannel", {
   },
 
   received: function(data) {
-    console.log('new post created')
+    $('.post').prepend(data.post);
   }
 });
