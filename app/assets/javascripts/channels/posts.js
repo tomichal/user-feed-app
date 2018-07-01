@@ -1,12 +1,10 @@
 App.posts = App.cable.subscriptions.create("PostsChannel", {
   connected: function() {
-    console.log('connected')
+    console.log('Connected')
   },
-
   disconnected: function() {
-    // Called when the subscription has been terminated by the server
+    console.log('Disconnected')
   },
-
   received: function(data) {
     $('.post').prepend(data.post);
   }

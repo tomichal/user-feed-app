@@ -18,6 +18,3 @@
     = text_field_tag :q, params[:q], placeholder: "Search...", autocomplete: :off
     = submit_tag "Search"
   = render "users/users", users: []
-- else
-  %h2
-    %em Log in to search for and follow other users.

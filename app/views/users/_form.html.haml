@@ -1,0 +1,5 @@
+= form_for user, remote: true, data: { submit_on_change: true } do |f|
+  = f.check_box :is_feed_public
+  = f.label :is_feed_public, "Is Public"
+
+  = f.submit "Submit", style: "display: none"

@@ -10,7 +10,7 @@ Rails.application.routes.draw do
 
   resources :posts, only: [:index, :create]
 
-  resources :users, only: [:index]
+  resources :users, only: [:index, :update]
 
   resources :follow_user_maps, only: [:create, :destroy]
 

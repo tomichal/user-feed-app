@@ -8,5 +8,9 @@ $(function(){
     }, 300)
   })
 
+  $(document).on('change', '[data-submit-on-change]', function(){
+    $(this).find('input[type=submit]').click()
+  })
+
   $('form[data-submit-on-load]').find('input[type=submit]').click();
 })
