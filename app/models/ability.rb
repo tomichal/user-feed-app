@@ -6,5 +6,6 @@ class Ability
 
     can :index, Post
     can :create, Post if user.persisted?
+    can :index, User
   end
 end

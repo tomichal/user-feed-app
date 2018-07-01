@@ -1,0 +1,2 @@
+- users_html = escape_javascript(render("users/users", users: @users)).html_safe
+$('.#{dom_class(User)}').replaceWith('#{users_html}');

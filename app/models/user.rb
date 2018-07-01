@@ -18,4 +18,14 @@ class User < ApplicationRecord
   def first_name
     name.split(" ").first
   end
+
+  class << self
+    def search(params = {})
+      base = all
+      if params[:q].present?
+        base = base.where("name ILIKE :q OR username ILIKE :q", q: "%#{params[:q]}%")
+      end
+      base
+    end
+  end
 end

@@ -1,0 +1,4 @@
+%ul{ class: dom_class(User) }
+  - users.each do |user|
+    %li{ id: dom_id(user) }= user.name
+  = pagination_links(users, param_name: :users_page)

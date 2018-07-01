@@ -3,7 +3,10 @@ class PostsController < ApplicationController
 
   def index
     @post = Post.new
-    @posts = Post.feed(current_user)
+    @posts = Post.feed(current_user).paginate(page: params[:posts_page])
+    if signed_in?
+      @users = User.paginate(page: params[:users_page])
+    end
   end
 
   def create

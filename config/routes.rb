@@ -8,7 +8,9 @@ Rails.application.routes.draw do
   get "/login", to: "sessions#new"
   delete "/logout", to: "sessions#destroy"
 
-  resources :posts
+  resources :posts, only: [:index, :create]
+
+  resources :users, only: [:index]
 
   # ActionCable
   mount ActionCable.server => "/cable"
