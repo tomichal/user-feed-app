@@ -6,7 +6,14 @@ class UsersController < ApplicationController
   end
 
   def update
-    @user.save
+    @user = User.find(params[:id])
+    @user.attributes = user_params
+    is_feed_public_changed = @user.is_feed_public_changed?
+    if @user.save
+      if is_feed_public_changed
+        UserRelayJob.perform_now(@user.id)
+      end
+    end
   end
 
   private
