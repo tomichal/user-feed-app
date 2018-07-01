@@ -7,6 +7,6 @@
     Posts by users you follow
   - else
     All public posts
-%ul
+%ul{class: dom_class(Post) }
 - @posts.each do |post|
-  %li= post.content
+  %li{ id: dom_id(post) }= post.content
