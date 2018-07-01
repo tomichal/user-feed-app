@@ -4,7 +4,7 @@ class User < ApplicationRecord
   has_many :follower_users, through: :follower_user_maps, class_name: "User", source: :follower_user
   has_many :followed_users, through: :followed_user_maps, class_name: "User", source: :followed_user
 
-  # TODO: Instead of destroying the posts upon user account deletion we could
+  # NOTE: Instead of destroying the posts upon user account deletion we could
   # also anonymise them - offering the user an option to do that if they decide
   # to delete their account.
   has_many :posts, dependent: :destroy

@@ -4,6 +4,6 @@ class PostsChannel < ApplicationCable::Channel
   end
 
   def unsubscribed
-    # TODO: Any cleanup needed when channel is unsubscribed
+    # TODO: Any cleanup when channel is unsubscribed.
   end
 end
