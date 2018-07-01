@@ -6,11 +6,11 @@ class Post < ApplicationRecord
   class << self
     # TODO: Write tests.
     def feed(user)
-      base = joins(:user).order("created_at DESC")
       if user.nil?
-        base.where(users: { is_feed_public: true })
+        joins(:user).where(users: { is_feed_public: true }).order("posts.created_at DESC")
       else
-        base.merge(user.followed_users)
+        # TODO: Can this scoping be better somehow?
+        where(id: joins(:user).merge(user.followed_users).pluck(:id)).or(user.posts).order("posts.created_at DESC")
       end
     end
   end
