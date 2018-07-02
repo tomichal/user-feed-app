@@ -1,3 +1,7 @@
+# NOTE: This (as well as other "secrets") are commited to the repo since it's
+# a demo app, not present in production. Having secrets in the repository makes
+# it easier to get it running by someone pulling it for the first time.
+
 defaults: &defaults
   adapter: postgresql
   encoding: unicode
