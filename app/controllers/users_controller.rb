@@ -4,7 +4,6 @@ class UsersController < ApplicationController
   def index
     @users = User.includes(:followed_user_maps, :followed_users, :follower_users)
                  .search(params)
-                 .where.not(id: current_user.id)
                  .paginate(page: params[:users_page])
   end
 

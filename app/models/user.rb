@@ -33,6 +33,12 @@ class User < ApplicationRecord
       if params[:q].present?
         base = base.where("name ILIKE :q OR username ILIKE :q", q: "%#{params[:q]}%")
       end
+      if params[:follower_user_id].present?
+        base = base.joins(:follower_user_maps).where(follow_user_maps: { follower_user_id: params[:follower_user_id] })
+      end
+      if params[:followed_user_id].present?
+        base = base.joins(:followed_users).where(follow_user_maps: { followed_user_id: params[:followed_user_id] })
+      end
       base
     end
   end

@@ -7,7 +7,14 @@ class Post < ApplicationRecord
   validates :content, length: { maximum: MAX_LENGTH }
 
   class << self
-    # TODO: Write tests.
+    def search(params = {})
+      base = all
+      if params[:user_id].present?
+        base = base.where(user_id: params[:user_id])
+      end
+      base
+    end
+
     def feed(user)
       if user.nil?
         joins(:user).where(users: { is_feed_public: true }).order("posts.created_at DESC")

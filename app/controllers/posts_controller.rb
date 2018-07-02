@@ -3,7 +3,10 @@ class PostsController < ApplicationController
 
   def index
     @post = Post.new
-    @posts = Post.feed(current_user).paginate(page: params[:posts_page])
+    @posts = Post.feed(current_user).search(params).paginate(page: params[:posts_page])
+    if params[:user_id].present?
+      @user = User.find(params[:user_id])
+    end
   end
 
   def create
