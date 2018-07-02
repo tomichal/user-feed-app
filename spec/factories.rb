@@ -1,6 +1,6 @@
 FactoryBot.define do
   factory :post do
-    content { Forgery(:lorem_ipsum).paragraphs(rand(5) + 1) }
+    content { Forgery(:lorem_ipsum).paragraphs(1) }
     user
 
     trait :public do
@@ -19,9 +19,10 @@ FactoryBot.define do
   end
 
   factory :user do
-    password "test1234"
     sequence :username do |n|
       "#{Forgery(:name).first_name.downcase}#{n}"
     end
+    password "test1234"
+    name { Forgery(:name).name }
   end
 end

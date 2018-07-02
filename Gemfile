@@ -31,6 +31,7 @@ gem "delayed_job_active_record"
 gem "daemons"
 gem "jquery-rails"
 gem "will_paginate"
+gem "rails-controller-testing"
 
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]

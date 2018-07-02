@@ -1,4 +1,3 @@
-# TODO: Add tests for the followed/follower associations.
 class User < ApplicationRecord
   has_many :followed_user_maps, foreign_key: "follower_user_id", dependent: :destroy, class_name: "FollowUserMap"
   has_many :follower_user_maps, foreign_key: "followed_user_id", dependent: :destroy, class_name: "FollowUserMap"
