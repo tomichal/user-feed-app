@@ -7,6 +7,6 @@
 
   - unless current_user == user
     - if followed_user_map.present?
-      = button_to "Following", follow_user_map_path(followed_user_map), method: :delete, remote: true, class: "js-following-button"
+      = button_to "Following", follow_user_map_path(followed_user_map), method: :delete, remote: true, class: "js-following-button btn"
     - else
-      = button_to "Follow", follow_user_maps_path, remote: true, params: { follow_user_map: { followed_user_id: user.id } }
+      = button_to "Follow", follow_user_maps_path, remote: true, class: "btn", params: { follow_user_map: { followed_user_id: user.id } }

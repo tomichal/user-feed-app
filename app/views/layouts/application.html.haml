@@ -17,8 +17,6 @@
         - else
           %li= link_to "Go to My Feed", login_path
 
-
-
-    = render "shared/alerts", alerts: flash
-
-    = yield
+    .content
+      = render "shared/alerts", alerts: flash
+      = yield

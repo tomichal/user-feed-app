@@ -12,7 +12,7 @@
 
 - if signed_in?
   %h2 Users
-  = form_tag users_path, remote: true, method: :get, data: { submit_on_type: true, submit_on_load: true } do |f|
+  = form_tag users_path, remote: true, method: :get, class: "users-search", data: { submit_on_type: true, submit_on_load: true } do |f|
     = text_field_tag :q, params[:q], placeholder: "Search...", autocomplete: :off
-    = submit_tag "Search"
+    = submit_tag "Search", class: "hidden"
   = render "users/users", users: []

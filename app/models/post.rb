@@ -1,7 +1,10 @@
 class Post < ApplicationRecord
+  MAX_LENGTH = 280
+
   belongs_to :user
 
   validates :content, :user, presence: true
+  validates :content, length: { maximum: MAX_LENGTH }
 
   class << self
     # TODO: Write tests.

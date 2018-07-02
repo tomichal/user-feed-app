@@ -1,5 +1,22 @@
 .alert {
+  border-top: 1px solid;
+  border-bottom: 1px solid;
+
+  -webkit-transition: all 2s ease-in-out;
+  -moz-transition: all 2s ease-in-out;
+  -ms-transition: all 2s ease-in-out;
+  -o-transition: all 2s ease-in-out;
+  transition: all 2s ease-in-out;
+
   &.alert-success {
-    color: $green;
+    color: $green1;
+    border-color: $green1;
+    padding: 6px 0;
+  }
+  
+  &.fadeout {
+    -webkit-opacity: 0;
+    -moz-opacity: 0;
+    opacity: 0;
   }
 }

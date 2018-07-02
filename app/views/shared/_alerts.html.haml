@@ -3,3 +3,11 @@
     - if msg.is_a?(String)
       .alert{ class: "alert-#{name.downcase}" }
         = msg.html_safe
+
+:javascript
+  if (window.fadeAlertTimeOut) clearTimeout(window.fadeAlertTimeOut);
+  if (window.removeAlertTimeOut) clearTimeout(window.removeAlertTimeOut);
+  window.fadeAlertTimeOut = setTimeout(function () {
+    $('.alert').addClass('fadeout');
+    window.removeAlertTimeOut = setTimeout(function(){ $('.alert').remove(); }, 2000);
+  }, 2000)

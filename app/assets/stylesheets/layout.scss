@@ -1,7 +1,19 @@
 body {
   font-family: $body-font;
+  color: $black;
   font-weight: 200;
+  font-size: 18px;
+  padding-left: 36px;
+  padding-right: 36px;
+
+  h2 {
+    margin-top: 72px;
+    font-size: 36px;
+  }
   header {
+    margin-bottom: 48px;
+    border-top: 1px solid $black2;
+    border-bottom: 1px solid $black2;
     ul {
       padding: 0;
       li {
@@ -17,5 +29,8 @@ body {
     form {
       display: inline-block;
     }
+  }
+  .content {
+    max-width: 720px;
   }
 }
