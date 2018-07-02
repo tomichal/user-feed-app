@@ -40,6 +40,9 @@ form {
     padding: 0;
     li {
       margin-bottom: 24px;
+      .first-name {
+        display: none;
+      }
       .meta {
         display: block;
         font-size: .78em;

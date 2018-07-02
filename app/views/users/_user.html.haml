@@ -1,6 +1,7 @@
 %li{ id: dom_id(user) }
   - followed_user_map = current_user.followed_user_map(user)
-  %span= user.name
+  %span.name= user.name
+  %span.first-name= user.first_name
   %span.meta
     %span Follows #{user.followed_users.size}
     •

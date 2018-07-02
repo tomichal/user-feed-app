@@ -25,6 +25,13 @@ body {
           margin-left: 12px;
           margin-right: 12px;
         }
+        .name {
+          display: none;
+        }
+        .meta {
+          font-size: .78em;
+          font-weight: 600;
+        }
       }
     }
     form {

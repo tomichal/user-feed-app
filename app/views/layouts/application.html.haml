@@ -11,7 +11,7 @@
     %header
       %ul
         - if signed_in?
-          %li= current_user.first_name
+          = render "users/user", user: current_user
           %li= render "users/form", user: current_user
           %li= link_to "Go to Public Feed", logout_path, method: :delete
         - else
