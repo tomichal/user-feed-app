@@ -1,0 +1,12 @@
+- new_post = Post.new
+- post = @post.errors.any? ? @post : new_post
+- alerts_html = escape_javascript(render("shared/alerts", alerts: flash)).html_safe
+- form_html = escape_javascript(render("posts/form", post: post)).html_safe
+
+$('.alerts').replaceWith('#{alerts_html}');
+$('form##{dom_id(new_post)}').replaceWith('#{form_html}');
+
+- unless @post.errors.any?
+  - post_html = escape_javascript(render("posts/post", post: @post)).html_safe
+  $('.#{dom_class(Post)} ul').prepend('#{post_html}');
+  $('.alerts').replaceWith('#{alerts_html}');

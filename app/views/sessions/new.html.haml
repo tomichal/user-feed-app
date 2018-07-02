@@ -1,0 +1,6 @@
+%h1 Sign In
+
+= form_for :session, url: sessions_path do |f|
+  %div= f.text_field :username, placeholder: "Email"
+  %div= f.password_field :password, placeholder: "Password"
+  = f.submit "Sign In", class: "btn"

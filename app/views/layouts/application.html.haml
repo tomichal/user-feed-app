@@ -1,0 +1,22 @@
+!!!
+%html
+  %head
+    %meta{:content => "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}/
+    %title UserFeedApp
+    = csrf_meta_tags
+    = csp_meta_tag
+    = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload'
+    = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
+  %body
+    %header
+      %ul
+        - if signed_in?
+          = render "users/user", user: current_user
+          %li= render "users/form", user: current_user
+          %li= link_to "Go to Public Feed", logout_path, method: :delete
+        - else
+          %li= link_to "Go to My Feed", login_path
+
+    .content
+      = render "shared/alerts", alerts: flash
+      = yield

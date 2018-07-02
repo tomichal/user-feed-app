@@ -1,0 +1,39 @@
+.columns-container
+  .left.large
+    - if can?(:create, Post)
+      %h2 New Post
+      = render "posts/form", post: @post
+
+    %h2
+      - if signed_in?
+        Your
+      - else
+        Public
+      feed
+    - if @user
+      %p.filter
+        by #{@user.name}
+        = link_to "show all", posts_path(user_id: nil)
+
+    = render "posts/posts", posts: @posts
+
+  .right.small
+    - if signed_in?
+      %h2 Users
+      - if params[:followed_user_id].present?
+        %p.filter
+          #{current_user.first_name}'s Followers
+          = link_to "show all", posts_path(followed_user_id: nil)
+      - elsif params[:follower_user_id].present?
+        %p.filter
+          Followed by #{current_user.first_name}
+          = link_to "show all", posts_path(follower_user_id: nil)
+
+      = form_tag users_path, remote: true, method: :get, class: "users-search", data: { submit_on_type: true, submit_on_load: true } do |f|
+        = hidden_field_tag :followed_user_id, params[:followed_user_id]
+        = hidden_field_tag :follower_user_id, params[:follower_user_id]
+        = text_field_tag :q, params[:q], placeholder: "Search...", autocomplete: :off
+        = submit_tag "Search", class: "hidden"
+
+
+      = render "users/users", users: []

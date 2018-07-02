@@ -1,0 +1,29 @@
+%li{ id: dom_id(user) }
+  - followed_user_map = current_user.followed_user_map(user)
+  %span.name
+    - if followed_user_map.present?
+      = link_to user.name, posts_path(user_id: followed_user_map.followed_user_id)
+    - else
+      = user.name
+  %span.first-name= user.first_name
+  %span.meta
+    %span
+      = pluralize(user.posts.size, t(Post))
+    •
+    %span
+      - if current_user == user
+        = link_to "Follows #{user.followed_users.size}", posts_path(follower_user_id: user.id)
+      - else
+        Follows #{user.followed_users.size}
+    •
+    %span
+      - if current_user == user
+        = link_to "Followed by #{user.follower_users.size}", posts_path(followed_user_id: user.id)
+      - else
+        Followed by #{user.follower_users.size}
+
+  - unless current_user == user
+    - if followed_user_map.present?
+      = button_to "Following", follow_user_map_path(followed_user_map), method: :delete, remote: true, class: "js-following-button btn"
+    - else
+      = button_to "Follow", follow_user_maps_path, remote: true, class: "btn", params: { follow_user_map: { followed_user_id: user.id } }

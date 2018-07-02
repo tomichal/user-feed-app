@@ -1,0 +1,7 @@
+%li{ id: dom_id(post) }
+  .content= post.content
+  .meta
+    = post.user.first_name
+    •
+    = time_ago_in_words(post.created_at)
+    ago

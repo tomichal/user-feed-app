@@ -1,10 +1,8 @@
-development:
-  adapter: async
-
-test:
-  adapter: async
-
-production:
+# NOTE: Using redis in development and testing, so that the scenario of two
+#       browser windows can be demonstrated and tested.
+default: &default
   adapter: redis
-  url: <%= ENV.fetch("REDIS_URL") { "redis://localhost:6379/1" } %>
-  channel_prefix: user-feed-app_production
+  url: redis://localhost:6379
+development: *default
+production: *default
+test: *default

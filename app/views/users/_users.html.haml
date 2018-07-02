@@ -1,0 +1,7 @@
+%div{ class: dom_class(User) }
+  %ul
+    - users.each do |user|
+      = render "users/user", user: user
+
+  - if users.present?
+    = pagination_links(users, param_name: :users_page)
