@@ -1,9 +1,10 @@
 %li{ id: dom_id(user) }
   - followed_user_map = current_user.followed_user_map(user)
   %span= user.name
-  %ul.meta
-    %li Follows #{user.followed_users.size}
-    %li Followed by #{user.follower_users.size}
+  %span.meta
+    %span Follows #{user.followed_users.size}
+    •
+    %span Followed by #{user.follower_users.size}
 
   - unless current_user == user
     - if followed_user_map.present?
