@@ -1,0 +1,17 @@
+header {
+  ul {
+    padding: 0;
+    li {
+      display: inline-block;
+      list-style: none;
+      &:after {
+        content: "|";
+        margin-left: 12px;
+        margin-right: 12px;
+      }
+    }
+  }
+  form {
+    display: inline-block;
+  }
+}

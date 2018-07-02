@@ -9,16 +9,14 @@
     = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
   %body
     %header
-      - if signed_in?
-        = current_user.first_name
-        |
-        = link_to :logout, method: :delete do
-          Go to Public Feed
-        = render "users/form", user: current_user
-        
-      - else
-        = link_to :login do
-          Go to My Feed
+      %ul
+        - if signed_in?
+          %li= current_user.first_name
+          %li= render "users/form", user: current_user
+          %li= link_to "Go to Public Feed", logout_path, method: :delete
+        - else
+          %li= link_to "Go to My Feed", login_path
+
 
 
     = render "shared/alerts", alerts: flash
