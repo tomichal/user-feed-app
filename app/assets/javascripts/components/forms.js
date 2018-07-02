@@ -12,5 +12,7 @@ $(function(){
     $(this).find('input[type=submit]').click()
   })
 
-  $('form[data-submit-on-load]').find('input[type=submit]').click();
+  $(document).on('turbolinks:load', function () {
+    $('form[data-submit-on-load]').find('input[type=submit]').click();
+  })
 })
